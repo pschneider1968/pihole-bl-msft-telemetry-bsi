@@ -14,7 +14,7 @@ I will try to check for updates and new lists on a regular basis, but I can't pr
 As of today (Dec 16, 2022) the total number of blocked unique domains from all these lists is 5099479.
 
 If something does not work, or you suspect false positives, check against the commonly whitelisted domains
-at URLhttps://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
+at URL https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
 
 Hope this helps...
 Peter
