@@ -13,7 +13,7 @@ Thanks to:
   sjhgvr	https://oisd.nl/
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
-As of today (Dec 16, 2022) the total number of blocked unique domains from all these lists is 6095440.
+As of today (Dec 16, 2022) the total number of blocked unique domains from all these lists is 6121357.
 
 If something does not work, or you suspect false positives, check against the commonly whitelisted domains
 at URL https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
