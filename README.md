@@ -9,6 +9,7 @@ I also added my list of 67 blocklists that I found on the Interwebs by craft of 
 
 Thanks to:
   WaLLy3K       https://firebog.net/
+  hagezi        https://github.com/hagezi
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
 As of today (Dec 16, 2022) the total number of blocked unique domains from all these lists is 5099479.
