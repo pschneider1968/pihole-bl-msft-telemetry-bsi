@@ -65,3 +65,4 @@ https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.appl
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.huawei.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.winoffice.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.txt
+https://dbl.oisd.nl/
