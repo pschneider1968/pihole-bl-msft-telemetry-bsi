@@ -54,3 +54,14 @@ https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
 https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts
 https://malware-filter.gitlab.io/malware-filter/phishing-filter-hosts.txt
 https://v.firebog.net/hosts/Prigent-Malware.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/ultimate.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/fake.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/tif.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/doh-vpn-proxy-bypass.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/dyndns.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/hoster.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/personal.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.apple.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.huawei.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.winoffice.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.txt
