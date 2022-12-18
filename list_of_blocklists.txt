@@ -24,7 +24,7 @@ https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
 https://urlhaus.abuse.ch/downloads/hostfile/
 https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
 https://github.com/LunarWatcher/Pihole-blocklists/raw/master/global-blocklist-plain.txt
-https://raw.githubusercontent.com/pschneider1968/pihole-bl-msft-telemetry-bsi/master/msft-telemetry-bsi.txt
+https://raw.githubusercontent.com/pschneider1968/pihole-bl-msft-telemetry-bsi/master/msft_telemetry_bsi.txt
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts
 https://winhelp2002.mvps.org/hosts.txt
