@@ -34,7 +34,7 @@ if [ -f $1 ]; then
         $PIHOLE_CMD $2 $LINE
 
         # sleep to avoid DB locks due to commands in too fast succession
-        sleep 1
+        sleep 0.1
     done
 
 else
