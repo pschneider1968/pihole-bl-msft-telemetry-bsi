@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 SUCCESS=0
 ERROR=1
