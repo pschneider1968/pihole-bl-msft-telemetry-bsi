@@ -33,18 +33,8 @@ if [ -f $1 ]; then
     do
         $PIHOLE_CMD $2 $LINE
 
-        # dummy sleep (not a long time!) to avoid DB locks due to commands in too fast succession
-        sleep 0
-        sleep 0
-        sleep 0
-        sleep 0
-        sleep 0
-        sleep 0
-        sleep 0
-        sleep 0
-        sleep 0
-        sleep 0
-
+        # sleep to avoid DB locks due to commands in too fast succession
+        sleep 1
     done
 
 else
