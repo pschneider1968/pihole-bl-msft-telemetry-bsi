@@ -32,11 +32,14 @@ if [ -f $1 ]; then
     cat $1 | grep -v '#' | grep -v -e '^$' | sort | while read LINE
     do
         $PIHOLE_CMD $2 $LINE
+
+        # dummy sleep (not a long time!) to avoid DB locks due to commands in too fast succession
         sleep 0
         sleep 0
         sleep 0
         sleep 0
         sleep 0
+
     done
 
 else
@@ -44,7 +47,6 @@ else
 fi
 
 }
-
 
 if [ ! -z $PIHOLE_CMD ]; then
     if [ -x $PIHOLE_CMD ]; then
