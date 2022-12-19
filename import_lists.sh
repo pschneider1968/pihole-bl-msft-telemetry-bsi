@@ -6,16 +6,16 @@ ERROR=1
 PIHOLE_CMD=$(which pihole)
 
 WE_FILE=whitelist_exact.txt
-WE_FLAGS='whitelist --noreload'
+WE_FLAGS='whitelist --noreload --quiet'
 
 WR_FILE=whitelist_regex.txt
-WR_FLAGS='--white-regex --noreload'
+WR_FLAGS='--white-regex --noreload --quiet'
 
 BE_FILE=blacklist_exact.txt
-BE_FLAGS='blacklist --noreload'
+BE_FLAGS='blacklist --noreload --quiet'
 
 BR_FILE=blacklist_regex.txt
-BR_FLAGS='--regex --noreload'
+BR_FLAGS='--regex --noreload --quiet'
 
 NUKE_FLAGS='--nuke'
 
@@ -64,6 +64,9 @@ else
     echo Pi-Hole command $PIHOME_CMD not found, aborting!
     exit $ERROR
 fi
+
+echo Restarting DNS service to get rid of DB locks before updating lists...
+$PIHOLE_CMD $RELOAD_FLAGS
 
 echo
 echo Processing $WE_FILE...
