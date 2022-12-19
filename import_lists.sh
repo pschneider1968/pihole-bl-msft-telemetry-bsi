@@ -6,21 +6,21 @@ ERROR=1
 PIHOLE_CMD=$(which pihole)
 
 WE_FILE=whitelist_exact.txt
-WE_FLAGS='-w -nr'
+WE_FLAGS='whitelist --noreload'
 
 WR_FILE=whitelist_regex.txt
-WR_FLAGS='--white-regex -nr'
+WR_FLAGS='--white-regex --noreload'
 
 BE_FILE=blacklist_exact.txt
-BE_FLAGS='-b -nr'
+BE_FLAGS='blacklist --noreload'
 
 BR_FILE=blacklist_regex.txt
-BR_FLAGS='--regex -nr'
+BR_FLAGS='--regex --noreload'
 
 NUKE_FLAGS='--nuke'
 
 UPDATE_DB_FLAGS='-g'
-RELOAD_FLAGS='restartdns reloadlists'
+RELOAD_FLAGS='restartdns reload-lists'
 
 process_file () {
 
@@ -32,6 +32,11 @@ if [ -f $1 ]; then
     cat $1 | grep -v '#' | grep -v -e '^$' | sort | while read LINE
     do
         $PIHOLE_CMD $2 $LINE
+        sleep 0
+        sleep 0
+        sleep 0
+        sleep 0
+        sleep 0
     done
 
 else
