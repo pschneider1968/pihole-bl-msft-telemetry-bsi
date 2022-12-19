@@ -25,7 +25,7 @@ if [ -f $1 ]; then
 
     cat $1 | grep -v '#' | grep -v -e '^$' | sort | while read LINE
     do
-        echo $PIHOLE_CMD $2 $LINE
+        $PIHOLE_CMD $2 $LINE
     done
 
 else
