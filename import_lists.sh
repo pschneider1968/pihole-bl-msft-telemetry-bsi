@@ -65,7 +65,7 @@ process_file $BR_FILE $BR_FLAGS
 
 echo
 echo Now updating all adlists and Gravity DB...
-echo $PIHOLE_CMD $UPDATE_DB_FLAGS
+$PIHOLE_CMD $UPDATE_DB_FLAGS
 echo
 echo Done!
 
