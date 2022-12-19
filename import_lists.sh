@@ -29,7 +29,7 @@ if [ -f $1 ]; then
     echo Nuking list $2...
     $PIHOLE_CMD $2 $NUKE_FLAGS
 
-    cat $1 | grep -v '#' | grep -v -e '^$' | sort | while read LINE
+    cat $1 | grep -v '#' | grep -v -e '^$' | sort | uniq | while read LINE
     do
         $PIHOLE_CMD $2 $LINE
 
