@@ -7,12 +7,17 @@ REFRESH_SCRIPT="import_lists.sh"
 
 touch $LOG_FILE
 
-cd $DIRECTORY
-$REFRESH_CMD >> $LOG_FILE
+echo -------------------------------------------------- | tee -a $LOG_FILE | cat
+echo Refreshing lists at $(date)                        | tee -a $LOG_FILE | cat
+echo -------------------------------------------------- | tee -a $LOG_FILE | cat
+echo | tee -a $LOG_FILE | cat
 
-echo --------------------------------------- >> $LOG_FILE
-echo Refreshing lists at $(date) >> $LOG_FILE
-echo ---------------------------------------  >> $LOG_FILE
-echo  >> $LOG_FILE
+cd $DIRECTORY
+$REFRESH_CMD | tee -a $LOG_FILE | cat
 
 $SHELL $REFRESH_SCRIPT | tee $LOG_FILE | cat
+
+echo ------------------------------------------------- | tee -a $LOG_FILE | cat
+echo Done refreshing lists at $(date)                  | tee -a $LOG_FILE | cat
+echo ------------------------------------------------- | tee -a $LOG_FILE | cat
+echo | tee -a $LOG_FILE | cat
