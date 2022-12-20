@@ -1,10 +1,18 @@
 # My own entries so far
 
-t.co
 presence.teams.live.com
 presence.teams.microsoft.com
 disqus.com
 www.disqus.com
+
+
+# URL shortener
+
+t.co
+bit.ly
+goo.gl
+tinyurl.com
+is.gd
 
 
 # From https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
