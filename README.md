@@ -28,7 +28,7 @@ Install a crontab like this with crontab -e
 
 **TODO**
 
-Currently, there is way of importing the ad lists programmatically via CLI. So unfortunately, you have to add the contents of the
+Currently, there is no way of importing the ad lists programmatically via CLI. So unfortunately, you have to add the contents of the
 file `list_of_blocklists.txt` manually using the web interface. **Sorry!**  
 
 
