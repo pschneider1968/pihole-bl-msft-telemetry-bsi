@@ -3,7 +3,7 @@
 SUCCESS=0
 ERROR=1
 
-PIHOLE_CMD=$(which pihole)
+PIHOLE_CMD=/usr/local/bin/pihole
 
 WE_FILE=whitelist_exact.txt
 WE_FLAGS='whitelist --noreload --quiet'
