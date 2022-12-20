@@ -28,8 +28,8 @@ Install a crontab like this with crontab -e
 
 **TODO**
 
-Currently, there is no way of importing the ad lists programmatically via CLI. So unfortunately, you have to add the contents of the
-file `list_of_blocklists.txt` manually using the web interface. **Sorry!**  
+Currently, there is no way of importing the ad domain block lists programmatically via CLI. So unfortunately, you have to add
+the contents of the file `list_of_blocklists.txt` manually using the web interface. **Sorry!**  
 
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
