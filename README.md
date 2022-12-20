@@ -37,7 +37,7 @@ is a pointer to the file `msft_telemetry_bsi.txt` here in this GitHub repo, so t
 
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
-As of today (Dec 16, 2022) the total number of blocked unique domains from all these lists is 6121357.
+As of today (Dec 19, 2022) the total number of blocked unique domains from all these lists is 5838819.
 
 If something does not work, or you suspect false positives, check against the commonly whitelisted domains at [Pi-Hole Discourse](https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212)  
 
