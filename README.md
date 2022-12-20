@@ -26,6 +26,12 @@ Install a crontab like this with crontab -e
     40 0 * * * sh /etc/pihole/pihole-bl-msft-telemetry-bsi/refresh_all.sh
 
 
+**TODO**
+
+Currently, there is way of importing the ad lists programmatically via CLI. So unfortunately, you have to add the contents of the
+file `list_of_blocklists.txt` manually using the web interface. **Sorry!**  
+
+
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
 As of today (Dec 16, 2022) the total number of blocked unique domains from all these lists is 6121357.
 
