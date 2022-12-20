@@ -32,6 +32,10 @@ Currently, there is no way of importing the ad domain block lists programmatical
 the contents of the file `list_of_blocklists.txt` manually using the web interface. **Sorry!**  
 
 
+The blacklists and whitelists are loaded with the supplied scripts. Also, if you have entered the blocklists manually, one entry of them
+is a pointer to the file `msft_telemetry_bsi.txt` here in this GitHub repo, so this will be included in the refresh processing when it has changed here.  
+
+
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
 As of today (Dec 16, 2022) the total number of blocked unique domains from all these lists is 6121357.
 
