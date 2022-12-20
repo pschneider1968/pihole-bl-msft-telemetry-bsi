@@ -3,7 +3,11 @@
 SUCCESS=0
 ERROR=1
 
-PIHOLE_CMD=/usr/local/bin/pihole
+PIHOLE_CMD="/usr/local/bin/pihole"
+FTL_COMMAND="/usr/bin/pihole-FTL"
+SQL_EXEC_CMD="$FTL_COMMAND sqlite3"
+
+DB=/etc/pihole/gravity.db
 
 WE_FILE=whitelist_exact.txt
 WE_FLAGS='whitelist --noreload --quiet'
@@ -54,6 +58,27 @@ else
     echo Pi-Hole command $PIHOME_CMD not found, aborting!
     exit $ERROR
 fi
+
+if [ ! -z $FTL_CMD ]; then
+    if [ -x $FTL_CMD ]; then
+        echo Found executable pihole-FTL command $FTL_CMD!
+    else
+        echo pihole-FTL command $FTL_CMD not found, aborting!
+        exit $ERROR
+    fi
+else
+    echo pihole-FTL command $FTL_CMD not found, aborting!
+    exit $ERROR
+fi
+
+if [ -f $DB ]; then
+    echo Found Gravity DB $DB!
+else
+    echo Gravity DB $DB not found, aborting!
+    exit $ERROR
+fi
+
+echo Using "$FTL_CMD $SQL_EXEC_CMD $DB" to access Gravity DB...
 
 echo Restarting DNS service to get rid of DB locks before updating lists...
 $PIHOLE_CMD $RELOAD_FLAGS
