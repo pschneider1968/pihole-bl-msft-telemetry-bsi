@@ -99,14 +99,8 @@ EOF
     echo Importing...
     
 $SQL_EXEC_CMD <<EOF
-DROP TABLE IF EXISTS tmp_adlist_import
-EOF
-
-$SQL_EXEC_CMD <<EOF
-CREATE TABLE tmp_adlist_import (address TEXT NOT NULL UNIQUE)
-EOF
-
-$SQL_EXEC_CMD <<EOF
+DROP TABLE IF EXISTS tmp_adlist_import;
+CREATE TABLE tmp_adlist_import (address TEXT NOT NULL UNIQUE);
 .schema tmp_adlist_import
 EOF
 
