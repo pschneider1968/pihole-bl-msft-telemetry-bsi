@@ -1,9 +1,11 @@
 #!/usr/bin/bash
 
-DIRECTORY="/etc/pihole/pihole-bl-msft-telemetry-bsi"
-GIT_STATUS_CMD="git status"
-REFRESH_CMD="git pull --no-rebase"
+# We assume the directory of this script is the cloned Git repo
+MY_DIRECTORY=$(dirname $0)
+
 LOG_FILE="/var/log/pihole/refresh_pihole_lists.log"
+GIT_STATUS_CMD="git status"
+GIT_PULL_CMD="git pull --no-rebase"
 REFRESH_SCRIPT="import_lists.sh"
 
 touch $LOG_FILE
@@ -14,11 +16,11 @@ echo -------------------------------------------------- | tee -a $LOG_FILE | cat
 
 echo | tee -a $LOG_FILE | cat
 
-cd $DIRECTORY
+cd $MY_DIRECTORY
 $GIT_STATUS_CMD | tee -a $LOG_FILE | cat
 
 echo Pulling from remote repo... | tee -a $LOG_FILE | cat
-$REFRESH_CMD | tee -a $LOG_FILE | cat
+$GIT_PULL_CMD | tee -a $LOG_FILE | cat
 $GIT_STATUS_CMD | tee -a $LOG_FILE | cat
 
 $SHELL $REFRESH_SCRIPT | tee -a $LOG_FILE | cat
