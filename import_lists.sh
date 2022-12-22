@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-MY_VERSION='v0.2'
+MY_VERSION='v0.3'
 MY_YEAR='2022'
 BANNER="$(basename $0) $MY_VERSION (c) $MY_YEAR Peter Schneider, provided under MIT License"
 
