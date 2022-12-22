@@ -3,8 +3,21 @@
 Pi-Hole blocklist for hosts involved in Microsoft Windows telemetry, as documented by BSI Bund in Germany.
 
 Thanks to:  
-- [BSI Bund](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Telemetrie-Endpunkte_Windows10_Build_Build_21H2.html)  
+- [BSI Bund](https://www.bsi.bund.de/)  
 - [Karsten Neß](https://www.privacy-handbuch.de/autoren.htm)  
+
+
+You might want to refer to these documents published by the BSI:
+
+[Analysis of Telemetry component in Windows 10, V1.2](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Analyse_Telemetriekomponente_1_2.html)
+
+[Telemetry end-points in Windows 10 Build 1809](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Telemetrie-Endpunkte_Windows10_Build_1809.html)
+
+[Telemetry end-points in Windows 10 Build 21H2](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Telemetrie-Endpunkte_Windows10_Build_Build_21H2.html)
+
+[Deactivation of the Telemetry component in Windows 10 Build 21H2 V1.0](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/E20172000_BSI_Win10_AFUNKT_TELE_DEAKTIVIEREN_v1_0.html)
+
+[Windows 10: BSI offers tool for Telemetry monitoring, July 7, 2022](https://www.bsi.bund.de/DE/Service-Navi/Presse/Alle-Meldungen-News/Meldungen/Tool_Telemetrie-Monitoring_220719.html)
 
 
 I also added my list of 68 blocklists that I found on the Interwebs by craft of my Google-Fu.  
@@ -36,15 +49,6 @@ as documented by the German Federal Bureau of Security in Information Technology
 in der Informationstechnik) in their project "SiSyPHuS Win10".
 
 This list will thus be included in the refresh processing when it has changed here in my repo.
-
-
-You might want to refer to these documents published by the BSI:
-
-https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Analyse_Telemetriekomponente_1_2.html
-https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Telemetrie-Endpunkte_Windows10_Build_1809.html
-https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Telemetrie-Endpunkte_Windows10_Build_Build_21H2.html
-https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/E20172000_BSI_Win10_AFUNKT_TELE_DEAKTIVIEREN_v1_0.html
-https://www.bsi.bund.de/DE/Service-Navi/Presse/Alle-Meldungen-News/Meldungen/Tool_Telemetrie-Monitoring_220719.html
 
 
 The import process can be run in four different modes: ADD, MERGE, DELETE and FULL.
