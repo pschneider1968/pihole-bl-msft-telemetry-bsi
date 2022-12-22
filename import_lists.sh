@@ -1,14 +1,18 @@
 #!/usr/bin/bash
 
+MY_VERSION='v0.2'
+MY_YEAR='2022'
+BANNER="$(basename $0) $MY_VERSION (c) $MY_YEAR Peter Schneider, provided under MIT License"
+
 SUCCESS=0
 ERROR=1
 
-DB=/etc/pihole/gravity.db
-BACKUP_DB=/etc/pihole/gravity_pre_refresh_backup.db
+DB='/etc/pihole/gravity.db'
+BACKUP_DB='/etc/pihole/gravity_pre_refresh_backup.db'
 
-PIHOLE_CMD="/usr/local/bin/pihole"
-FTL_CMD="/usr/bin/pihole-FTL"
-SQL_EXEC_CMD="$FTL_CMD sqlite3 $DB"
+PIHOLE_CMD='/usr/local/bin/pihole'
+FTL_CMD='/usr/bin/pihole-FTL'
+SQL_EXEC_CMD='$FTL_CMD sqlite3 $DB'
 
 BL_FILE=list_of_blocklists.txt
 
@@ -49,6 +53,44 @@ else
 fi
 
 }
+
+# Banner
+echo $BANNER
+
+# Mode of operation
+MODE=${1^^}
+
+if [ -z "$MODE" ]; then
+    MODE='ADD'
+fi
+
+if [ "$MODE" = "HELP" -o "$MODE" = "--HELP" -o "$MODE" = "-H" -o "$MODE" = "-?" -o "$MODE" = "/?" ]; then
+    echo 
+    echo "Synopsis: import_lists.sh [MODE]"
+    echo
+    echo "This script will import the contents of the supplied file \"list_of_blocklists.txt\" into your Pi-Hole Gravity DB,"
+    echo "where MODE may be one of:"
+    echo
+    echo "   - HELP:    display this help info"
+    echo "   - ADD:     only add new lists, don't do anything to existing lists. This is the recommended mode of operation"
+    echo "              when you have other sources for your block lists, too, other than my repo."
+    echo "              It is also the default when no MODE is specified."
+    echo "   - MERGE:   add new lists, disable missing ones, re-enable disabled existing lists if they are in the import file."
+    echo "              This retains group assignments on existing list entries. This is the recommended mode of operation"
+    echo "              when my repo is the ONLY source of block lists for your Pi-Hole installation."
+    echo "   - DELETE:  add new lists, delete missing ones. Group assignments on deleted groups are of course lost, and they cannot"
+    echo "              just be re-enabled again, but will be newly imported when they happen to be in the next import file again."
+    echo "   - FULL:    fully replace all existing list entries in Gravity DB with the imported ones. Group assignments are thus lost."
+    echo "              That means that before inserting anything from the import file, everything is deleted in the Gravity DB."
+    echo 
+elif [ ! "$MODE" = "ADD" -a ! "$MODE" = "MERGE" -a ! "$MODE" = "DELETE" -a ! "$MODE" = "FULL" ]
+then
+    echo "ERROR: Unknown mode $MODE, please use the parameter \"HELP\" for information on script usage!"
+    exit $ERROR
+else
+    echo "Mode of import operation is $MODE"
+fi
+
 
 if [ ! -z $PIHOLE_CMD ]; then
     if [ -x $PIHOLE_CMD ]; then
@@ -114,10 +156,20 @@ EOF
     done
 
     echo Done inserting blocklist entries - now verifying...
+    echo
+    echo --------------------------------------------------
+    echo Imported lists:
+    echo --------------------------------------------------
+    echo
 
 $SQL_EXEC_CMD <<EOF
 SELECT address FROM tmp_adlist_import ORDER BY address;
+.print
+.print Number of imported lists:
+.print --------------------------
+.print
 SELECT COUNT(*) FROM tmp_adlist_import;
+.print
 EOF
 
 #

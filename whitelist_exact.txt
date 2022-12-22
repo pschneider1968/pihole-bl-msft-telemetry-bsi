@@ -4,6 +4,7 @@ presence.teams.live.com
 presence.teams.microsoft.com
 disqus.com
 www.disqus.com
+user-rating.burda-forward.de
 
 
 # URL shortener

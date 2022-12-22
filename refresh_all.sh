@@ -6,7 +6,7 @@ MY_DIRECTORY=$(dirname $0)
 LOG_FILE="/var/log/pihole/refresh_pihole_lists.log"
 GIT_STATUS_CMD="git status"
 GIT_PULL_CMD="git pull --no-rebase"
-REFRESH_SCRIPT="import_lists.sh"
+REFRESH_SCRIPT="import_lists.sh $1"
 
 touch $LOG_FILE
 
