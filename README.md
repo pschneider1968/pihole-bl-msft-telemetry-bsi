@@ -1,4 +1,5 @@
-# pihole-bl-msft-telemetry-bsi
+# PIHOLE-BL-MSFT-TELEMETRY-BSI
+
 Pi-Hole blocklist for hosts involved in Microsoft Windows telemetry, as documented by BSI Bund in Germany.
 
 Thanks to:  
@@ -14,6 +15,7 @@ Thanks to:
 - [sjhgvr](https://oisd.nl/)  
 
 
+
 **Usage:**
 
     cd /etc/pihole
@@ -21,15 +23,32 @@ Thanks to:
     cd pihole-bl-msft-telemetry-bsi
     sh refresh_all.sh
 
-Install a crontab like this with crontab -e
+
+Install a crontab like this with `crontab -e`:
 
     40 0 * * * sh /etc/pihole/pihole-bl-msft-telemetry-bsi/refresh_all.sh merge
 
 
-The blacklists and whitelists are loaded with the supplied scripts. Also, if you have entered the blocklists manually, one entry of them
-is a pointer to the file `msft_telemetry_bsi.txt` here in this GitHub repo, so this will be included in the refresh processing when it has changed here.  
+The big domain blocklist from file `list_of_blocklists.txt` as well as the blacklists and whitelists are
+loaded with the supplied scripts.  One of those list entries is a pointer to the file `msft_telemetry_bsi.txt`
+here in this GitHub repository, which contains the list of Microsoft hosts involved in Windows telemetry,
+as documented by the German Federal Bureau of Security in Information Technology (BSI, Bundesamt für Sicherheit
+in der Informationstechnik) in their project "SiSyPHuS Win10".
 
-The import process can be run in four different modes: ADD, MERGE, DELETE and FULL. Please call the script import_lists.sh with the parameter HELP to learn more:
+This list will thus be included in the refresh processing when it has changed here in my repo.
+
+
+You might want to refer to these documents published by the BSI:
+
+https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Analyse_Telemetriekomponente_1_2.html
+https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Telemetrie-Endpunkte_Windows10_Build_1809.html
+https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/Telemetrie-Endpunkte_Windows10_Build_Build_21H2.html
+https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Cyber-Sicherheit/SiSyPHus/E20172000_BSI_Win10_AFUNKT_TELE_DEAKTIVIEREN_v1_0.html
+https://www.bsi.bund.de/DE/Service-Navi/Presse/Alle-Meldungen-News/Meldungen/Tool_Telemetrie-Monitoring_220719.html
+
+
+The import process can be run in four different modes: ADD, MERGE, DELETE and FULL.
+Please call the script import_lists.sh with the parameter HELP to learn more:
 
 
     
