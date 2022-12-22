@@ -87,8 +87,9 @@ then
     echo "              mode of operation when my repo is the ONLY source of block lists for your Pi-Hole installation."
     echo
     echo "   - DELETE:  Add new lists, delete missing ones, re-enable disabled existing lists if they are in the"
-    echo "              import file.  Group assignments on deleted groups are of course lost, and they cannot just be"
-    echo "              re-enabled again, but will be newly imported when they happen to be in the next import file again."
+    echo "              import file.  Group assignments on deleted groups are of course lost, and they cannot"
+    echo "              just be re-enabled again, but will be newly imported when they happen to be in the"
+    echo "              next version of the import file again."
     echo
     echo "   - FULL:    Fully replace all existing list entries in Gravity DB with the imported ones."
     echo "              Group assignments are thus lost.  That means that before inserting anything from the"

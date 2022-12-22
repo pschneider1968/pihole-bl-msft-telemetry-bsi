@@ -32,6 +32,7 @@ is a pointer to the file `msft_telemetry_bsi.txt` here in this GitHub repo, so t
 The import process can be run in four different modes: ADD, MERGE, DELETE and FULL. Please call the script import_lists.sh with the parameter HELP to learn more:
 
 
+    
     $ sh import_lists.sh HELP
     import_lists.sh v0.2 (c) 2022 Peter Schneider, provided under MIT License
     
@@ -51,12 +52,14 @@ The import process can be run in four different modes: ADD, MERGE, DELETE and FU
                mode of operation when my repo is the ONLY source of block lists for your Pi-Hole installation.
 
     - DELETE:  Add new lists, delete missing ones, re-enable disabled existing lists if they are in the
-               import file.  Group assignments on deleted groups are of course lost, and they cannot just be
-               re-enabled again, but will be newly imported when they happen to be in the next import file again.
+               import file.  Group assignments on deleted groups are of course lost, and they cannot
+               just be re-enabled again, but will be newly imported when they happen to be in the
+               next version of the import file again.
 
     - FULL:    Fully replace all existing list entries in Gravity DB with the imported ones.
                Group assignments are thus lost.  That means that before inserting anything from the
                import file, everything is deleted in the Gravity DB.
+    
     
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
