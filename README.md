@@ -42,20 +42,20 @@ The import process can be run in four different modes: ADD, MERGE, DELETE and FU
     
     - HELP:    display this help info
     - ADD:     only add new lists, don't do anything to existing lists. This is the recommended mode of operation
-                when you have other sources for your block lists, too, other than my repo.
-                It is also the default when no MODE is specified.
+               when you have other sources for your block lists, too, other than my repo.
+               It is also the default when no MODE is specified.
     - MERGE:   add new lists, disable missing ones, re-enable disabled existing lists if they are in the import file.
-                This retains group assignments on existing list entries. This is the recommended mode of operation
-                when my repo is the ONLY source of block lists for your Pi-Hole installation.
+               This retains group assignments on existing list entries. This is the recommended mode of operation
+               when my repo is the ONLY source of block lists for your Pi-Hole installation.
     - DELETE:  add new lists, delete missing ones, re-enable disabled existing lists if they are in the import file.
-                Group assignments on deleted groups are of course lost, and they cannot just be re-enabled again,
-                but will be newly imported when they happen to be in the next import file again.
+               Group assignments on deleted groups are of course lost, and they cannot just be re-enabled again,
+               but will be newly imported when they happen to be in the next import file again.
     - FULL:    fully replace all existing list entries in Gravity DB with the imported ones. Group assignments are thus lost.
-                That means that before inserting anything from the import file, everything is deleted in the Gravity DB.
+               That means that before inserting anything from the import file, everything is deleted in the Gravity DB.
     
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
-As of today (Dec 19, 2022) the total number of blocked unique domains from all these lists is 5838819.
+As of today (Dec 22, 2022) the total number of blocked unique domains from all these lists is 6775012.
 
 If something does not work, or you suspect false positives, check against the commonly whitelisted domains at [Pi-Hole Discourse](https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212)  
 
