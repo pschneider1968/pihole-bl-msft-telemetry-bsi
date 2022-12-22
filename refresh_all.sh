@@ -23,6 +23,8 @@ echo Pulling from remote repo... | tee -a $LOG_FILE | cat
 $GIT_PULL_CMD | tee -a $LOG_FILE | cat
 $GIT_STATUS_CMD | tee -a $LOG_FILE | cat
 
+echo
+
 $SHELL $REFRESH_SCRIPT | tee -a $LOG_FILE | cat
 
 echo ------------------------------------------------- | tee -a $LOG_FILE | cat

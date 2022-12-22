@@ -12,7 +12,7 @@ BACKUP_DB='/etc/pihole/gravity_pre_refresh_backup.db'
 
 PIHOLE_CMD='/usr/local/bin/pihole'
 FTL_CMD='/usr/bin/pihole-FTL'
-SQL_EXEC_CMD='$FTL_CMD sqlite3 $DB'
+SQL_EXEC_CMD="$FTL_CMD sqlite3 $DB"
 
 BL_FILE=list_of_blocklists.txt
 
@@ -33,6 +33,8 @@ NUKE_FLAGS='--nuke'
 UPDATE_DB_FLAGS='-g'
 RELOAD_FLAGS='restartdns reload-lists'
 
+
+# Functions
 process_file () {
 
 if [ -f $1 ]; then
@@ -45,7 +47,8 @@ if [ -f $1 ]; then
         $PIHOLE_CMD $2 $LINE
 
         # sleep to avoid DB locks due to commands in too fast succession
-        sleep 0.1
+        sleep 0.5
+        sync
     done
 
 else
@@ -60,7 +63,7 @@ echo $BANNER
 # Mode of operation
 MODE=${1^^}
 
-if [ -z "$MODE" ]; then
+if [ -z "$MODE" ]; then         # default mode
     MODE='ADD'
 fi
 
@@ -78,8 +81,9 @@ if [ "$MODE" = "HELP" -o "$MODE" = "--HELP" -o "$MODE" = "-H" -o "$MODE" = "-?" 
     echo "   - MERGE:   add new lists, disable missing ones, re-enable disabled existing lists if they are in the import file."
     echo "              This retains group assignments on existing list entries. This is the recommended mode of operation"
     echo "              when my repo is the ONLY source of block lists for your Pi-Hole installation."
-    echo "   - DELETE:  add new lists, delete missing ones. Group assignments on deleted groups are of course lost, and they cannot"
-    echo "              just be re-enabled again, but will be newly imported when they happen to be in the next import file again."
+    echo "   - DELETE:  add new lists, delete missing ones, re-enable disabled existing lists if they are in the import file."
+    echo "              Group assignments on deleted groups are of course lost, and they cannot just be re-enabled again,"
+    echo "              but will be newly imported when they happen to be in the next import file again."
     echo "   - FULL:    fully replace all existing list entries in Gravity DB with the imported ones. Group assignments are thus lost."
     echo "              That means that before inserting anything from the import file, everything is deleted in the Gravity DB."
     echo 
@@ -91,7 +95,7 @@ else
     echo "Mode of import operation is $MODE"
 fi
 
-
+# check that all we need to handle can be found
 if [ ! -z $PIHOLE_CMD ]; then
     if [ -x $PIHOLE_CMD ]; then
         echo Found executable Pi-Hole command $PIHOLE_CMD!
@@ -125,10 +129,9 @@ fi
 
 
 # Check that we have a blocklist file at all, otherwise we dont want to make noise...
-
 if [ -f $BL_FILE -a -r $BL_FILE ]; then
 
-    echo Blocklist file $BL_FILE found!
+    echo Found blocklist file $BL_FILE!
     echo Using "$SQL_EXEC_CMD" to access Gravity DB...
 
     # Before doing anything serious, we make a full DB backup
@@ -153,6 +156,9 @@ $SQL_EXEC_CMD <<EOF
 INSERT INTO tmp_adlist_import (address) VALUES ('$LINE');
 EOF
 
+        # sleep a bit to avoid DB lock issues...
+        sleep 0.1
+
     done
 
     echo Done inserting blocklist entries - now verifying...
@@ -173,30 +179,62 @@ SELECT COUNT(*) FROM tmp_adlist_import;
 EOF
 
 #
-# Now we will update the Gravity DB table adlist from our imported file, as follows:
-# - mark lists that were not imported as disabled
-# - mark lists that were disabled but re-imported as enabled
-# - insert new lists that were not present before
-# So because we do not delete any records from adlist, no group assignments will be lost!
+# Now we will update the Gravity DB table adlist from our imported file,
+# depending on our specified import mode:
+# - delete everything in FULL mode
+# - delete missing lists in DELETE mode
+# - mark lists that were not imported as disabled in MERGE mode
+# - mark lists that were disabled but re-imported as enabled in DELETE and MERGE mode
+# - insert new lists that were not present before in ALL modes
+# - in ADD mode, we never delete or disable lists
+# - in MERGE mode, we never delete lists
+# - in DELETE mode, we only delete lists not in the import file
 #
 
     echo
-    echo Now processing imported lists...
+    echo Now processing imported lists with mode $MODE...
     echo
-    echo "1) Disabling obsolete lists..."
+
+    if [ "$MODE" = "FULL" ]; then
+
+        echo "Deleting tables gravity and adlist..."
 
 $SQL_EXEC_CMD <<EOF
 .changes on
-UPDATE adlist
-   SET enabled = FALSE
- WHERE enabled = TRUE
-   AND NOT EXISTS
+.print gravity...
+DELETE FROM gravity;
+.print adlist...
+DELETE FROM adlist;
+EOF
+
+    fi  # FULL
+
+
+    if [ "$MODE" = "DELETE" ]; then
+
+        echo "Deleting missing lists from tables gravity and adlist..."
+
+$SQL_EXEC_CMD <<EOF
+.changes on
+.print gravity...
+DELETE FROM gravity
+ WHERE gravity.adlist_id IN
+      (SELECT adlist.id
+         FROM adlist
+        WHERE adlist.address NOT IN
+             (SELECT tmp_adlist_import.address
+                FROM tmp_adlist_import
+             )
+      );
+.print adlist...
+DELETE FROM adlist
+ WHERE NOT EXISTS
       (SELECT 1
          FROM tmp_adlist_import
         WHERE adlist.address = tmp_adlist_import.address);
 EOF
 
-    echo "2) Reenabling disabled lists that are in imported blocklist file..."
+    echo "Reenabling disabled lists that are in imported blocklist file..."
 
 $SQL_EXEC_CMD <<EOF
 .changes on
@@ -209,7 +247,42 @@ UPDATE adlist
         WHERE adlist.address = tmp_adlist_import.address);
 EOF
 
-    echo "3) Importing new list entries..."
+    fi  # DELETE
+
+
+    if [ "$MODE" = "MERGE" ]; then
+
+        echo "Disabling obsolete lists..."
+
+$SQL_EXEC_CMD <<EOF
+.changes on
+UPDATE adlist
+   SET enabled = FALSE
+ WHERE enabled = TRUE
+   AND NOT EXISTS
+      (SELECT 1
+         FROM tmp_adlist_import
+        WHERE adlist.address = tmp_adlist_import.address);
+EOF
+
+    echo "Reenabling disabled lists that are in imported blocklist file..."
+
+$SQL_EXEC_CMD <<EOF
+.changes on
+UPDATE adlist
+   SET enabled = TRUE
+ WHERE enabled = FALSE
+   AND EXISTS
+      (SELECT 1
+         FROM tmp_adlist_import
+        WHERE adlist.address = tmp_adlist_import.address);
+EOF
+
+    fi  # MERGE
+
+
+    # Common operations for all modes
+    echo "Importing new list entries..."
 
 $SQL_EXEC_CMD <<EOF
 .changes on
@@ -225,6 +298,7 @@ EOF
     # For the time being, we do not drop our temporary import table now, so that
     # it is possible to review its contents and eventually debug issues from the import
 
+    echo
     echo Done with processing the imported lists!
 
 
