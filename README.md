@@ -6,7 +6,7 @@ The BSI is the "German Federal Bureau of Security in Information Technology" (in
 
 Thanks to:  
 - [BSI Bund](https://www.bsi.bund.de/)  
-- [Karsten Neß](https://www.privacy-handbuch.de/autoren.htm)  
+- [Karsten Neß, principal author of "The Privacy Handbook"](https://www.privacy-handbuch.de/autoren.htm)  
 
 
 You might want to refer to these documents published by the BSI:
@@ -29,6 +29,15 @@ Thanks to:
 - [hagezi](https://github.com/hagezi)  
 - [sjhgvr](https://oisd.nl/)  
 
+Furthermore, I included commonly whitelisted domains from the Pi-Hole Discourse page (see at the bottom)
+as well as some of my own personal whitelist entries.  This whitelist is far from complete, so some sites
+you use might not work.  Please let me know, so that I can include them.  Please post this information
+also to the Pi-Hole discourse list.
+
+It should be noted that currently, the import process will completely replace all blacklist and whitelist entries
+in your Pi-Hole installation from the files I supply here.  This will probably be improved in a future version.
+For progress on this necessary enhancement, see also [Issue #7](https://github.com/pschneider1968/pihole-bl-msft-telemetry-bsi/issues/7)
+
 
 **Usage:**
 
@@ -38,7 +47,7 @@ Thanks to:
     sh refresh_all.sh
 
 
-Install a crontab like this with `crontab -e`:
+Install a crontab like this with `crontab -e` to regularly update from my repo at 0:40 AM in the night:
 
     40 0 * * * sh /etc/pihole/pihole-bl-msft-telemetry-bsi/refresh_all.sh merge
 
