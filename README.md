@@ -1,8 +1,8 @@
-# PIHOLE-BL-MSFT-TELEMETRY-BSI
+# A vast and useful collection of Pi-Hole block lists
 
-Pi-Hole blocklist for hosts involved in Microsoft Windows telemetry, as documented by BSI Bund in Germany
-in their project "SiSyPHuS Win10".  The BSI is the "German Federal Bureau of Security in Information Technology"
-(Bundesamt für Sicherheit in der Informationstechnik).
+Here I publish a collection of Pi-Hole blocklists, including a blocklist disallowing well known
+Microsoft(tm) Windows(R) Telemetry hosts, as documented by BSI Bund in Germany in their project "SiSyPHuS Win10".
+The BSI is the "German Federal Bureau of Security in Information Technology" (in German: Bundesamt für Sicherheit in der Informationstechnik).
 
 Thanks to:  
 - [BSI Bund](https://www.bsi.bund.de/)  
