@@ -5,6 +5,7 @@ presence.teams.microsoft.com
 disqus.com
 www.disqus.com
 user-rating.burda-forward.de
+boards.greenhouse.io
 
 
 # URL shortener
