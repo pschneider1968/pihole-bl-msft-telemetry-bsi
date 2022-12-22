@@ -14,7 +14,7 @@ Thanks to:
 - [sjhgvr](https://oisd.nl/)  
 
 
-Usage:  
+**Usage:**
 
     cd /etc/pihole
     git clone https://github.com/pschneider1968/pihole-bl-msft-telemetry-bsi.git
