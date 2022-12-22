@@ -1,6 +1,8 @@
 # PIHOLE-BL-MSFT-TELEMETRY-BSI
 
-Pi-Hole blocklist for hosts involved in Microsoft Windows telemetry, as documented by BSI Bund in Germany.
+Pi-Hole blocklist for hosts involved in Microsoft Windows telemetry, as documented by BSI Bund in Germany
+in their project "SiSyPHuS Win10".  The BSI is the "German Federal Bureau of Security in Information Technology"
+(Bundesamt für Sicherheit in der Informationstechnik).
 
 Thanks to:  
 - [BSI Bund](https://www.bsi.bund.de/)  
@@ -44,8 +46,7 @@ Install a crontab like this with `crontab -e`:
 The big domain blocklist from file `list_of_blocklists.txt` as well as the blacklists and whitelists are
 loaded with the supplied scripts.  One of those list entries is a pointer to the file `msft_telemetry_bsi.txt`
 here in this GitHub repository, which contains the list of Microsoft hosts involved in Windows telemetry,
-as documented by the German Federal Bureau of Security in Information Technology (BSI, Bundesamt für Sicherheit
-in der Informationstechnik) in their project "SiSyPHuS Win10".
+as documented by the BSI.
 
 This list will thus be included in the refresh processing when it has changed here in my repo.
 
