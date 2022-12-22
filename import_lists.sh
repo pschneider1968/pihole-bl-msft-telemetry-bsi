@@ -67,30 +67,41 @@ if [ -z "$MODE" ]; then         # default mode
     MODE='ADD'
 fi
 
-if [ "$MODE" = "HELP" -o "$MODE" = "--HELP" -o "$MODE" = "-H" -o "$MODE" = "-?" -o "$MODE" = "/?" ]; then
-    echo 
+if [ "$MODE" = "HELP" -o "$MODE" = "--HELP" -o "$MODE" = "-H" -o "$MODE" = "-?" -o "$MODE" = "/?" ]
+then
+
+    echo
     echo "Synopsis: import_lists.sh [MODE]"
     echo
-    echo "This script will import the contents of the supplied file \"list_of_blocklists.txt\" into your Pi-Hole Gravity DB,"
-    echo "where MODE may be one of:"
+    echo "This script will import the contents of the supplied file \"list_of_blocklists.txt\" into your"
+    echo "Pi-Hole Gravity DB, where MODE may be one of:"
     echo
     echo "   - HELP:    display this help info"
-    echo "   - ADD:     only add new lists, don't do anything to existing lists. This is the recommended mode of operation"
-    echo "              when you have other sources for your block lists, too, other than my repo."
+    echo
+    echo "   - ADD:     Only add new lists, don't do anything to existing lists.  This is the recommended mode"
+    echo "              of operation when you have other sources for your block lists, too, other than my repo."
     echo "              It is also the default when no MODE is specified."
-    echo "   - MERGE:   add new lists, disable missing ones, re-enable disabled existing lists if they are in the import file."
-    echo "              This retains group assignments on existing list entries. This is the recommended mode of operation"
-    echo "              when my repo is the ONLY source of block lists for your Pi-Hole installation."
-    echo "   - DELETE:  add new lists, delete missing ones, re-enable disabled existing lists if they are in the import file."
-    echo "              Group assignments on deleted groups are of course lost, and they cannot just be re-enabled again,"
-    echo "              but will be newly imported when they happen to be in the next import file again."
-    echo "   - FULL:    fully replace all existing list entries in Gravity DB with the imported ones. Group assignments are thus lost."
-    echo "              That means that before inserting anything from the import file, everything is deleted in the Gravity DB."
-    echo 
+    echo
+    echo "   - MERGE:   Add new lists, disable missing ones, re-enable disabled existing lists if they are in"
+    echo "              the import file.  This retains group assignments on existing list entries. This is the recommended"
+    echo "              mode of operation when my repo is the ONLY source of block lists for your Pi-Hole installation."
+    echo
+    echo "   - DELETE:  Add new lists, delete missing ones, re-enable disabled existing lists if they are in the"
+    echo "              import file.  Group assignments on deleted groups are of course lost, and they cannot"
+    echo "              just be re-enabled again, but will be newly imported when they happen to be in the"
+    echo "              next version of the import file again."
+    echo
+    echo "   - FULL:    Fully replace all existing list entries in Gravity DB with the imported ones."
+    echo "              Group assignments are thus lost.  That means that before inserting anything from the"
+    echo "              import file, everything is deleted in the Gravity DB."
+    echo
+
 elif [ ! "$MODE" = "ADD" -a ! "$MODE" = "MERGE" -a ! "$MODE" = "DELETE" -a ! "$MODE" = "FULL" ]
 then
+
     echo "ERROR: Unknown mode $MODE, please use the parameter \"HELP\" for information on script usage!"
     exit $ERROR
+
 else
     echo "Mode of import operation is $MODE"
 fi
