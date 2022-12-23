@@ -49,7 +49,7 @@ For progress on this necessary enhancement, see also [Issue #7](https://github.c
 
 Install a crontab like this with `crontab -e` to regularly update from my repo at 0:40 AM in the night:
 
-    40 0 * * * sh /etc/pihole/pihole-bl-msft-telemetry-bsi/refresh_all.sh merge
+    40 0 * * * /bin/bash /etc/pihole/pihole-bl-msft-telemetry-bsi/refresh_all.sh merge
 
 
 The big domain blocklist from file `list_of_blocklists.txt` as well as the blacklists and whitelists are
