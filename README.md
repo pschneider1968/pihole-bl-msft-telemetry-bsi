@@ -66,7 +66,7 @@ Please call the script import_lists.sh with the parameter HELP to learn more:
 
     
     $ sh import_lists.sh HELP
-    import_lists.sh v0.2 (c) 2022 Peter Schneider, provided under MIT License
+    import_lists.sh v0.4  (c) 2022,2023 by Peter Schneider - provided under MIT License
     
     Synopsis: import_lists.sh [MODE]
     
