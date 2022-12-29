@@ -66,3 +66,4 @@ https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.huaw
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.winoffice.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.txt
 https://dbl.oisd.nl/
+https://raw.githubusercontent.com/badmojr/1Hosts/master/Pro/domains.txt
