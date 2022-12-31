@@ -8,7 +8,7 @@ user-rating.burda-forward.de
 boards.greenhouse.io
 picclick.de
 link.sg.booking.com
-
+dlvr.it
 
 # URL shortener
 
