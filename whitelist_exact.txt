@@ -9,6 +9,8 @@ boards.greenhouse.io
 picclick.de
 link.sg.booking.com
 dlvr.it
+de.amazonforum.com
+
 
 # URL shortener
 
