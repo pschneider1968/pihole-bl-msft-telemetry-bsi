@@ -1,37 +1,42 @@
 #!/usr/bin/bash
 
-MY_VERSION='v0.4'
-MY_YEAR='2022,2023'
+MY_VERSION="v0.4"
+MY_YEAR="2022,20232"
 BANNER="$(basename $0) $MY_VERSION  (c) $MY_YEAR by Peter Schneider - provided under MIT License"
 
 SUCCESS=0
 ERROR=1
 
-DB='/etc/pihole/gravity.db'
-BACKUP_DB='/etc/pihole/gravity_pre_refresh_backup.db'
+DB="/etc/pihole/gravity.db"
+BACKUP_DB="/etc/pihole/gravity_pre_refresh_backup.db"
 
-PIHOLE_CMD='/usr/local/bin/pihole'
-FTL_CMD='/usr/bin/pihole-FTL'
+PIHOLE_CMD="/usr/local/bin/pihole"
+FTL_CMD="/usr/bin/pihole-FTL"
 SQL_EXEC_CMD="$FTL_CMD sqlite3 $DB"
+
+START="start"
+STOP="stop"
+FTL_START_CMD="systemctl $START pihole-FTL.service"
+FTL_STOP_CMD="systemctl $STOP pihole-FTL.service"
 
 BL_FILE=list_of_blocklists.txt
 
 WE_FILE=whitelist_exact.txt
-WE_FLAGS='whitelist --noreload --quiet'
+WE_FLAGS="whitelist --noreload --quiet"
 
 WR_FILE=whitelist_regex.txt
-WR_FLAGS='--white-regex --noreload --quiet'
+WR_FLAGS="--white-regex --noreload --quiet"
 
 BE_FILE=blacklist_exact.txt
-BE_FLAGS='blacklist --noreload --quiet'
+BE_FLAGS="blacklist --noreload --quiet"
 
 BR_FILE=blacklist_regex.txt
-BR_FLAGS='--regex --noreload --quiet'
+BR_FLAGS="--regex --noreload --quiet"
 
-NUKE_FLAGS='--nuke'
+NUKE_FLAGS="--nuke"
 
-UPDATE_DB_FLAGS='-g'
-RELOAD_FLAGS='restartdns reload-lists'
+UPDATE_DB_FLAGS="-g"
+RELOAD_FLAGS="restartdns reload-lists"
 
 
 # Functions
@@ -45,10 +50,6 @@ if [ -f $1 ]; then
     cat $1 | grep -v '#' | grep -v -e '^$' | sort | uniq | while read LINE
     do
         $PIHOLE_CMD $2 $LINE
-
-        # sleep to avoid DB locks due to commands in too fast succession
-        sleep 0.5
-        sync
     done
 
 else
@@ -145,6 +146,11 @@ if [ -f $BL_FILE -a -r $BL_FILE ]; then
     echo Found blocklist file $BL_FILE!
     echo Using "$SQL_EXEC_CMD" to access Gravity DB...
 
+    echo Shutting down pihole-FTL...
+    $FTL_STOP_CMD
+
+    sleep 2
+
     # Before doing anything serious, we make a full DB backup
     echo Backing up DB $DB to $BACKUP_DB...
 
@@ -166,9 +172,6 @@ EOF
 $SQL_EXEC_CMD <<EOF
 INSERT INTO tmp_adlist_import (address) VALUES ('$LINE');
 EOF
-
-        # sleep a bit to avoid DB lock issues...
-        sleep 0.1
 
     done
 
@@ -317,6 +320,12 @@ else
     echo No blocklist file $BL_FILE found, will not update adlist table in Gravity DB!
 fi
 
+sleep 2
+
+echo Starting up pihole-FTL...
+$FTL_START_CMD
+
+sleep 2
 
 echo Restarting DNS service to get rid of DB locks before updating lists...
 $PIHOLE_CMD $RELOAD_FLAGS
@@ -337,9 +346,13 @@ echo
 echo Processing $BR_FILE...
 process_file $BR_FILE $BR_FLAGS
 
+sleep 2
+
 echo
 echo Now updating all adlists and Gravity DB...
 $PIHOLE_CMD $UPDATE_DB_FLAGS
+
+sleep 2
 
 echo
 echo Restarting DNS service...
