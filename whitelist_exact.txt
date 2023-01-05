@@ -10,6 +10,7 @@ picclick.de
 link.sg.booking.com
 dlvr.it
 de.amazonforum.com
+info.jetbrains.com
 
 
 # URL shortener
