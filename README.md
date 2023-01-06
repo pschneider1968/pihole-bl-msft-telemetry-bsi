@@ -1,6 +1,6 @@
 # A vast and useful collection of Pi-Hole block lists
 
-Here I publish a collection of Pi-Hole blocklists, including a blocklist disallowing well known
+Here I publish a big collection of Pi-Hole blocklists, including a blocklist disallowing well known
 Microsoft(tm) Windows(R) Telemetry hosts, as documented by BSI Bund in Germany in their project "SiSyPHuS Win10".
 The BSI is the "German Federal Bureau of Security in Information Technology" (in German: Bundesamt für Sicherheit in der Informationstechnik).
 
@@ -22,12 +22,19 @@ You might want to refer to these documents published by the BSI:
 [Windows 10: BSI offers tool for Telemetry monitoring, July 7, 2022](https://www.bsi.bund.de/DE/Service-Navi/Presse/Alle-Meldungen-News/Meldungen/Tool_Telemetrie-Monitoring_220719.html)
 
 
-I also added my list of 68 blocklists that I found on the Interwebs by craft of my Google-Fu.  
+I also added my list of ~100 blocklists that I found on the Interwebs by craft of my Google-Fu.  
 
 Thanks to:  
 - [WaLLy3K](https://firebog.net/)  
 - [hagezi](https://github.com/hagezi)  
 - [sjhgvr](https://oisd.nl/)  
+- [ookangzheng](https://github.com/ookangzheng)
+- [The Blocklist Project](https://github.com/blocklistproject)
+and many others, please see their respective GitHub repos.
+
+I did not include every list I found.  Especially, I decided against censoring certain content like social networks,
+crypto, porn or gambling.  I included only such lists of domains which obviously target your privacy (like ads and trackers)
+or are outright dangerous for your computer safety, like sites spreading malware, known phishing sites etc.
 
 Furthermore, I included commonly whitelisted domains from the Pi-Hole Discourse page (see at the bottom)
 as well as some of my own personal whitelist entries.  This whitelist is far from complete, so some sites
@@ -37,6 +44,7 @@ also to the Pi-Hole discourse list.
 It should be noted that currently, the import process will completely replace all blacklist and whitelist entries
 in your Pi-Hole installation from the files I supply here.  This will probably be improved in a future version.
 For progress on this necessary enhancement, see also [Issue #7](https://github.com/pschneider1968/pihole-bl-msft-telemetry-bsi/issues/7)
+
 
 
 **Usage:**
@@ -95,9 +103,27 @@ Please call the script import_lists.sh with the parameter HELP to learn more:
     
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
-As of today (Dec 22, 2022) the total number of blocked unique domains from all these lists is 6775012.
+As of today (Jan 6, 2023) the total number of blocked unique domains from all these lists is 
+roughly 8.0 million.
 
-If something does not work, or you suspect false positives, check against the commonly whitelisted domains at [Pi-Hole Discourse](https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212)  
+You should be aware that importing these lists may take upto 10 minutes or even more, depending on
+the hardware on which you Pi-Hole installation is running.  That amount of time is mostly due to the fact
+that in the last step of the import process, the Pihole service program counts the number of unique domains
+in the gravity table, which causes a lot of I/O in the SQLite3 database and takes a lot of time.
+Please be patient and don't interrupt the import process at this step, as this might corrupt the database.
+If you are running your Pi-Hole in a VM or container, giving it more resources, e.g. at least 2 vCPU cores
+and 512 MiB of RAM during the import process might help speeding things up.
 
-Hope this helps...  
+It is a good idea to have this in a cronjob late at night so that it does not matter much how long it takes.
+
+
+If something does not work, or you suspect false positives, check against the commonly whitelisted domains
+at [Pi-Hole Discourse](https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212)
+
+
+I hope you find this collection of lists and the synchronization scripts useful.  Please let me know if you have
+any suggestions for improvement, issues, bug fixes.  Feel free to fork the repo and work on your own copy.
+I am open for pull requests of improvements or fixes!
+
 Peter
+

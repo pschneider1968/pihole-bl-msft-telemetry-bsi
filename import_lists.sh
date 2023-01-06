@@ -60,6 +60,7 @@ if [ -f $1 ]; then
     cat $1 | grep -v '#' | grep -v -e '^$' | sort | uniq | while read LINE
     do
         $PIHOLE_CMD $2 $LINE
+	sleep 0.2
     done
 
 else

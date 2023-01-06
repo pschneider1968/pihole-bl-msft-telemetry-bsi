@@ -1,4 +1,6 @@
+#
 # My own entries so far
+#
 
 presence.teams.live.com
 presence.teams.microsoft.com
@@ -12,9 +14,16 @@ dlvr.it
 de.amazonforum.com
 info.jetbrains.com
 
+# necessary to view videos on www.spiegel.de
+ssl.1.damoh.spiegel.de
+ssl.2.damoh.spiegel.de
+ssl.3.damoh.spiegel.de
+
+# allow Samsung Smart TV to operate normally
+cdn.samsungcloudsolution.com
+time.samsungcloudsolution.com
 
 # URL shortener
-
 t.co
 bit.ly
 goo.gl
@@ -22,8 +31,9 @@ tinyurl.com
 is.gd
 
 
+#
 # From https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
-
+#
 
 # Google
 
@@ -78,7 +88,13 @@ t0.ssl.ak.dynamic.tiles.virtualearth.net
 t0.ssl.ak.tiles.virtualearth.net
 
 
+#
 # Xbox
+#
+# - for the time being, still commented out here, because this
+#   will open up other Microsoft telemetry again which we want to avoid!
+# - If you are an Xbox user, remove the comment marks, at your own risk.
+#
 
 # v10.events.data.microsoft.com
 # v20.events.data.microsoft.com
@@ -288,4 +304,5 @@ data.cnn.com
 www.cnn.com
 cnn.com
 cdn.cnn.com
-geolocation.onetrust.com
+geolocation.onetrust.comA
+
