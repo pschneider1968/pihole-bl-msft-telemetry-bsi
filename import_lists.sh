@@ -1,11 +1,17 @@
 #!/usr/bin/bash
 
+START_TIME_DISPLAY=$(date)
+START_TIME_SEC=$(date +%s)
+
 MY_VERSION="v0.4"
-MY_YEAR="2022,20232"
+MY_YEAR="2022,2023"
 BANNER="$(basename $0) $MY_VERSION  (c) $MY_YEAR by Peter Schneider - provided under MIT License"
 
 SUCCESS=0
 ERROR=1
+
+SUCCESS_MSG="[SUCCESS]"
+FAILURE_MSG="[FAILED]"
 
 DB="/etc/pihole/gravity.db"
 BACKUP_DB="/etc/pihole/gravity_pre_refresh_backup.db"
@@ -14,10 +20,14 @@ PIHOLE_CMD="/usr/local/bin/pihole"
 FTL_CMD="/usr/bin/pihole-FTL"
 SQL_EXEC_CMD="$FTL_CMD sqlite3 $DB"
 
+# This should work regardless of whether systemd is in use or not; might not work with OpenRC, however - IDK
 START="start"
 STOP="stop"
-FTL_START_CMD="systemctl $START pihole-FTL.service"
-FTL_STOP_CMD="systemctl $STOP pihole-FTL.service"
+FTL_SERVICE="pihole-FTL"
+SERVICE_CMD="service"
+
+FTL_START_CMD="$SERVICE_CMD $FTL_SERVICE $START"
+FTL_STOP_CMD="$SERVICE_CMD $FTL_SERVICE $STOP"
 
 BL_FILE=list_of_blocklists.txt
 
@@ -58,8 +68,21 @@ fi
 
 }
 
+check_success () {
+
+if [ "$?" -eq "0" ]; then
+	echo $SUCCESS_MSG
+else
+	echo $FAILURE_MSG
+	exit $ERROR
+fi
+
+}
+
+
 # Banner
 echo $BANNER
+echo Started at $START_TIME_DISPLAY
 
 # Mode of operation
 MODE=${1^^}
@@ -110,7 +133,7 @@ fi
 # check that all we need to handle can be found
 if [ ! -z $PIHOLE_CMD ]; then
     if [ -x $PIHOLE_CMD ]; then
-        echo Found executable Pi-Hole command $PIHOLE_CMD!
+        echo Found executable Pi-Hole command $PIHOLE_CMD
     else
         echo Pi-Hole command $PIHOME_CMD not found, aborting!
         exit $ERROR
@@ -122,7 +145,7 @@ fi
 
 if [ ! -z $FTL_CMD ]; then
     if [ -x $FTL_CMD ]; then
-        echo Found executable pihole-FTL command $FTL_CMD!
+        echo Found executable pihole-FTL command $FTL_CMD
     else
         echo pihole-FTL command $FTL_CMD not found, aborting!
         exit $ERROR
@@ -133,7 +156,7 @@ else
 fi
 
 if [ -f $DB ]; then
-    echo Found Gravity DB $DB!
+    echo Found Gravity DB $DB
 else
     echo Gravity DB $DB not found, aborting!
     exit $ERROR
@@ -149,6 +172,8 @@ if [ -f $BL_FILE -a -r $BL_FILE ]; then
     echo Shutting down pihole-FTL...
     $FTL_STOP_CMD
 
+    check_success
+
     sleep 2
 
     # Before doing anything serious, we make a full DB backup
@@ -158,13 +183,19 @@ $SQL_EXEC_CMD <<EOF
 .backup main $BACKUP_DB
 EOF
 
-    echo Importing...
+    check_success
+
+    echo Creating temporary import table...
     
 $SQL_EXEC_CMD <<EOF
 DROP TABLE IF EXISTS tmp_adlist_import;
 CREATE TABLE tmp_adlist_import (address TEXT NOT NULL UNIQUE);
 .schema tmp_adlist_import
 EOF
+
+    check_success
+    
+    echo Importing file...
 
     cat $BL_FILE | grep -v '#' | grep -v -e '^$' | sort | uniq | while read LINE
     do
@@ -174,6 +205,8 @@ INSERT INTO tmp_adlist_import (address) VALUES ('$LINE');
 EOF
 
     done
+
+    check_success
 
     echo Done inserting blocklist entries - now verifying...
     echo
@@ -191,6 +224,8 @@ SELECT address FROM tmp_adlist_import ORDER BY address;
 SELECT COUNT(*) FROM tmp_adlist_import;
 .print
 EOF
+
+    check_success
 
 #
 # Now we will update the Gravity DB table adlist from our imported file,
@@ -221,6 +256,8 @@ DELETE FROM gravity;
 DELETE FROM adlist;
 EOF
 
+    check_success
+
     fi  # FULL
 
 
@@ -248,6 +285,8 @@ DELETE FROM adlist
         WHERE adlist.address = tmp_adlist_import.address);
 EOF
 
+    check_success
+
     echo "Reenabling disabled lists that are in imported blocklist file..."
 
 $SQL_EXEC_CMD <<EOF
@@ -260,6 +299,8 @@ UPDATE adlist
          FROM tmp_adlist_import
         WHERE adlist.address = tmp_adlist_import.address);
 EOF
+
+    check_success
 
     fi  # DELETE
 
@@ -279,6 +320,8 @@ UPDATE adlist
         WHERE adlist.address = tmp_adlist_import.address);
 EOF
 
+    check_success
+
     echo "Reenabling disabled lists that are in imported blocklist file..."
 
 $SQL_EXEC_CMD <<EOF
@@ -291,6 +334,8 @@ UPDATE adlist
          FROM tmp_adlist_import
         WHERE adlist.address = tmp_adlist_import.address);
 EOF
+
+    check_success
 
     fi  # MERGE
 
@@ -309,6 +354,8 @@ SELECT tmp_adlist_import.address, TRUE
         WHERE adlist.address = tmp_adlist_import.address);
 EOF
 
+    check_success
+
     # For the time being, we do not drop our temporary import table now, so that
     # it is possible to review its contents and eventually debug issues from the import
 
@@ -324,40 +371,57 @@ sleep 2
 
 echo Starting up pihole-FTL...
 $FTL_START_CMD
-
+check_success
 sleep 2
 
-echo Restarting DNS service to get rid of DB locks before updating lists...
+echo Restarting DNS service...
 $PIHOLE_CMD $RELOAD_FLAGS
+check_success
+sleep 2
 
 echo
 echo Processing $WE_FILE...
 process_file $WE_FILE $WE_FLAGS
+check_success
 
 echo
 echo Processing $WR_FILE...
 process_file $WR_FILE $WR_FLAGS
+check_success
 
 echo
 echo Processing $BE_FILE...
 process_file $BE_FILE $BE_FLAGS
+check_success
 
 echo
 echo Processing $BR_FILE...
 process_file $BR_FILE $BR_FLAGS
+check_success
 
 sleep 2
 
 echo
 echo Now updating all adlists and Gravity DB...
-$PIHOLE_CMD $UPDATE_DB_FLAGS
+echo "***** PLEASE BE PATIENT - This step might take several minutes! *****"
+echo
+
+time $PIHOLE_CMD $UPDATE_DB_FLAGS
+check_success
 
 sleep 2
 
 echo
 echo Restarting DNS service...
 $PIHOLE_CMD $RELOAD_FLAGS
+check_success
 
-echo Done!
+END_TIME_DISPLAY=$(date)
+END_TIME_SEC=$(date +%s)
+RUN_TIME_SEC=$((END_TIME_SEC - $START_TIME_SEC))
+
+echo Processing finished at $END_TIME_DISPLAY, it took $RUN_TIME_SEC seconds.
+echo Processing took $(date -ud "@$RUN_TIME_SEC" +%H:%M:%S) "HH:MI:SS"
 
 exit $SUCCESS
+

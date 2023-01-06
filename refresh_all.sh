@@ -33,8 +33,9 @@ echo "" 2>&1 | tee -a $LOG_FILE | cat
 
 $SHELL $REFRESH_SCRIPT 2>&1 | tee -a $LOG_FILE | cat
 
+echo "" 2>&1 | tee -a $LOG_FILE | cat
 echo "-------------------------------------------------" 2>&1 | tee -a $LOG_FILE | cat
 echo "Done refreshing lists at $(date)                 " 2>&1 | tee -a $LOG_FILE | cat
 echo "-------------------------------------------------" 2>&1 | tee -a $LOG_FILE | cat
-
 echo "" 2>&1 | tee -a $LOG_FILE | cat
+
