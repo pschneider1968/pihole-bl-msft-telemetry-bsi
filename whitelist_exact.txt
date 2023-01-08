@@ -14,9 +14,6 @@ dlvr.it
 de.amazonforum.com
 info.jetbrains.com
 
-# Docker desktop diagnostic checks this
-api.segment.io
-
 # necessary to view videos on www.spiegel.de
 ssl.1.damoh.spiegel.de
 ssl.2.damoh.spiegel.de
