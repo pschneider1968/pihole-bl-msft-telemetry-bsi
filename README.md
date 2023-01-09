@@ -103,7 +103,7 @@ Please call the script import_lists.sh with the parameter HELP to learn more:
     
 
 I will try to check for updates and new lists on a regular basis, but I can't promise anything.
-As of today (Jan 6, 2023) the total number of blocked unique domains from all these lists is 
+As of today (Jan 9, 2023) the total number of blocked unique domains from all 101 lists is 
 roughly 8.0 million.
 
 You should be aware that importing these lists may take upto 10 minutes or even more, depending on
