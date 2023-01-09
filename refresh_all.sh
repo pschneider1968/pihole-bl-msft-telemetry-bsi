@@ -13,6 +13,10 @@ if [[ ! ":$PATH:" == *":/usr/local/bin:"* ]]; then
     PATH=/usr/local/bin:$PATH
 fi
 
+if [[ ! ":$PATH:" == *":/usr/sbin:"* ]]; then
+    PATH=/usr/sbin:$PATH
+fi
+
 touch $LOG_FILE
 
 echo "--------------------------------------------------" 2>&1 | tee -a $LOG_FILE | cat
@@ -33,8 +37,9 @@ echo "" 2>&1 | tee -a $LOG_FILE | cat
 
 $SHELL $REFRESH_SCRIPT 2>&1 | tee -a $LOG_FILE | cat
 
+echo "" 2>&1 | tee -a $LOG_FILE | cat
 echo "-------------------------------------------------" 2>&1 | tee -a $LOG_FILE | cat
 echo "Done refreshing lists at $(date)                 " 2>&1 | tee -a $LOG_FILE | cat
 echo "-------------------------------------------------" 2>&1 | tee -a $LOG_FILE | cat
-
 echo "" 2>&1 | tee -a $LOG_FILE | cat
+
