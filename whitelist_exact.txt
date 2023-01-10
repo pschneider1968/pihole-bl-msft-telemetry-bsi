@@ -13,6 +13,8 @@ link.sg.booking.com
 dlvr.it
 de.amazonforum.com
 info.jetbrains.com
+breakingthe3ma.app
+
 
 # necessary to view videos on www.spiegel.de
 ssl.1.damoh.spiegel.de
