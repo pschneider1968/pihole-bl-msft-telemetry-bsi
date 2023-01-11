@@ -8,3 +8,8 @@
 (\.|^)reddit\.com$
 
 s{1,5}.symcb.com
+
+(\.|^)o\.lencr\.org$
+(\.|^)c\.lencr\.org$
+(\.|^)i\.lencr\.org$
+
