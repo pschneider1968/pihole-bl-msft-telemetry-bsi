@@ -1,2 +1,4 @@
 cmp.heise.de
 firetvcaptiveportal.com
+fireoscaptiveportal.com
+
