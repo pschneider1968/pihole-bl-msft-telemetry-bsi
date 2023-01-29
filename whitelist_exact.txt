@@ -15,6 +15,7 @@ de.amazonforum.com
 info.jetbrains.com
 breakingthe3ma.app
 magentacloud.de
+youtu.be
 
 
 # necessary to view videos on www.spiegel.de
