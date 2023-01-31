@@ -16,6 +16,7 @@ info.jetbrains.com
 breakingthe3ma.app
 magentacloud.de
 youtu.be
+t.me
 
 
 # necessary to view videos on www.spiegel.de
