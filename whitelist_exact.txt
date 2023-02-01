@@ -17,6 +17,7 @@ breakingthe3ma.app
 magentacloud.de
 youtu.be
 t.me
+tails.boum.org
 
 
 # necessary to view videos on www.spiegel.de
