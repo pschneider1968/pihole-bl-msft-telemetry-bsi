@@ -18,6 +18,7 @@ magentacloud.de
 youtu.be
 t.me
 tails.boum.org
+oss.oetiker.ch
 
 
 # necessary to view videos on www.spiegel.de
