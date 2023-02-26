@@ -20,6 +20,7 @@ t.me
 tails.boum.org
 oss.oetiker.ch
 page.gitlab.com
+trib.al
 
 
 # necessary to view videos on www.spiegel.de
