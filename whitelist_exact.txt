@@ -19,6 +19,7 @@ youtu.be
 t.me
 tails.boum.org
 oss.oetiker.ch
+page.gitlab.com
 
 
 # necessary to view videos on www.spiegel.de
