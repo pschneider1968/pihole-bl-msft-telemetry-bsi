@@ -21,6 +21,7 @@ tails.boum.org
 oss.oetiker.ch
 page.gitlab.com
 trib.al
+fide.com
 
 
 # necessary to view videos on www.spiegel.de
