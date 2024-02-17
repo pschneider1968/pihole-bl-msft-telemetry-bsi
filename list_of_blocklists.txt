@@ -1,8 +1,7 @@
 http://npc.0am.jp/hosts.php?dl=1
 https://adaway.org/hosts.txt
 https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
-https://dbl.oisd.nl/
-https://dl.nrd-list.com/0/nrd-list-32-days.txt
+https://big.oisd.nl/
 https://dl.threat-list.com/0/domains.txt
 https://gist.githubusercontent.com/dieechtenilente/ad3fc9bacc205876b2e29dcb9043c8bc/raw/946b18ef170fa028067d8a3f135fe6c06ec30fa6/pihole.list
 https://github.com/LunarWatcher/Pihole-blocklists/raw/master/global-blocklist-plain.txt
@@ -34,7 +33,7 @@ https://raw.githubusercontent.com/blocklistproject/Lists/master/ransomware.txt
 https://raw.githubusercontent.com/blocklistproject/Lists/master/redirect.txt
 https://raw.githubusercontent.com/blocklistproject/Lists/master/scam.txt
 https://raw.githubusercontent.com/blocklistproject/Lists/master/tracking.txt
-https://raw.githubusercontent.com/Cats-Team/AdRules/main/hosts.txt
+https://raw.githubusercontent.com/Cats-Team/AdRules/main/dns.txt
 https://raw.githubusercontent.com/cchevy/macedonian-pi-hole-blocklist/master/hosts.txt
 https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
 https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt
@@ -42,15 +41,10 @@ https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/doh-vpn-proxy-bypass.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/dyndns.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/fake.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/hoster.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.apple.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.huawei.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.tiktok.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.winoffice.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/personal.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/tif.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/ultimate.txt
 https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt
@@ -77,7 +71,6 @@ https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts
 https://raw.githubusercontent.com/Yhonay/antipopads/master/hosts
-https://rescure.fruxlabs.com/rescure_domain_blacklist.txt
 https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
 https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
 https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt

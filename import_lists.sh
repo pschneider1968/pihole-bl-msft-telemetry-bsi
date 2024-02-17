@@ -3,7 +3,7 @@
 START_TIME_DISPLAY=$(date)
 START_TIME_SEC=$(date +%s)
 
-MY_VERSION="v0.4"
+MY_VERSION="v0.5"
 MY_YEAR="2022,2023"
 BANNER="$(basename $0) $MY_VERSION  (c) $MY_YEAR by Peter Schneider - provided under MIT License"
 
@@ -370,30 +370,26 @@ fi
 
 sleep 2
 
-echo Starting up pihole-FTL...
-$FTL_START_CMD
-check_success
-sleep 2
-
-echo Restarting DNS service...
-$PIHOLE_CMD $RELOAD_FLAGS
-check_success
-sleep 2
-
 echo
 echo Processing $WE_FILE...
 process_file $WE_FILE $WE_FLAGS
 check_success
+
+sleep 2
 
 echo
 echo Processing $WR_FILE...
 process_file $WR_FILE $WR_FLAGS
 check_success
 
+sleep 2
+
 echo
 echo Processing $BE_FILE...
 process_file $BE_FILE $BE_FLAGS
 check_success
+
+sleep 2
 
 echo
 echo Processing $BR_FILE...
@@ -401,6 +397,21 @@ process_file $BR_FILE $BR_FLAGS
 check_success
 
 sleep 2
+
+echo
+echo Starting up pihole-FTL...
+$FTL_START_CMD
+check_success
+
+sleep 2
+
+echo
+echo Restarting DNS service...
+$PIHOLE_CMD $RELOAD_FLAGS
+check_success
+
+sleep 2
+
 
 echo
 echo Now updating all adlists and Gravity DB...
