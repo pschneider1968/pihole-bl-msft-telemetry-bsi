@@ -4,7 +4,7 @@ START_TIME_DISPLAY=$(date)
 START_TIME_SEC=$(date +%s)
 
 MY_VERSION="v0.5"
-MY_YEAR="2022,2023"
+MY_YEAR="2022-2024"
 BANNER="$(basename $0) $MY_VERSION  (c) $MY_YEAR by Peter Schneider - provided under MIT License"
 
 SUCCESS=0
