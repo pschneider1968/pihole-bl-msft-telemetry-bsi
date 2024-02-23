@@ -51,7 +51,7 @@ storage.googleapis.com
 ablink.ma.linktr.ee
 d2.shared.global.fastly.net
 ea.newscpt19.de
-
+api-na1.hubapi.com
 
 #
 # More allowed sites to use Microsoft 365 through the browser
