@@ -55,6 +55,7 @@ ea.newscpt19.de
 api-na1.hubapi.com
 click.e.change.org
 yoast.com
+res.cloudinary.com
 
 
 #
