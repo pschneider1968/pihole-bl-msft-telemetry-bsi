@@ -56,6 +56,7 @@ api-na1.hubapi.com
 click.e.change.org
 yoast.com
 res.cloudinary.com
+s3.us-west-2.amazonaws.com
 
 
 #
