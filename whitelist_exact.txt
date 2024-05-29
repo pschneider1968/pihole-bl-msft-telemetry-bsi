@@ -59,6 +59,7 @@ res.cloudinary.com
 s3.us-west-2.amazonaws.com
 web.jimdo.com
 wl.spotify.com
+nextplatform.com
 
 
 #
