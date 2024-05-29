@@ -92,3 +92,15 @@ https://winhelp2002.mvps.org/hosts.txt
 https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
 https://www.stopforumspam.com/downloads/toxic_domains_whole.txt
 https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
+https://raw.githubusercontent.com/nextdns/click-tracking-domains/main/domains
+https://raw.githubusercontent.com/nextdns/no-safesearch/main/domains
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/alexa
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/apple
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/huawei
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/roku
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/samsung
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/sonos
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/windows
+https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/xiaomi
+https://raw.githubusercontent.com/nextdns/cname-cloaking-blocklist/master/domains
+
