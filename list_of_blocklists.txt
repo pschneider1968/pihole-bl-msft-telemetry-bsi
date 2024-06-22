@@ -2,7 +2,6 @@ http://npc.0am.jp/hosts.php?dl=1
 https://adaway.org/hosts.txt
 https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
 https://big.oisd.nl/
-https://dl.threat-list.com/0/domains.txt
 https://gist.githubusercontent.com/dieechtenilente/ad3fc9bacc205876b2e29dcb9043c8bc/raw/946b18ef170fa028067d8a3f135fe6c06ec30fa6/pihole.list
 https://github.com/LunarWatcher/Pihole-blocklists/raw/master/global-blocklist-plain.txt
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
