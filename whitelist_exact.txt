@@ -61,6 +61,7 @@ web.jimdo.com
 wl.spotify.com
 nextplatform.com
 open.spotify.com
+www.phpmyadmin.net
 
 
 #
