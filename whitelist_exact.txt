@@ -63,6 +63,8 @@ nextplatform.com
 open.spotify.com
 www.phpmyadmin.net
 jnn-pa.googleapis.com
+sonar21.com
+www.sonar21.com
 
 
 #
