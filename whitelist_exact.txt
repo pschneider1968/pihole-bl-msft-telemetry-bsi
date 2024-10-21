@@ -72,6 +72,7 @@ pixabay.com
 # More allowed sites to use Microsoft 365 through the browser
 #
 
+go.microsoft.com
 outlook.live.com
 onedrive.live.com
 login.live.com
