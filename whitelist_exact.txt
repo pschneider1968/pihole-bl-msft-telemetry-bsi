@@ -73,6 +73,8 @@ pixabay.com
 #
 
 go.microsoft.com
+info.microsoft.com
+microsoftdemandcenter-ssl.mktoweb.com
 outlook.live.com
 onedrive.live.com
 login.live.com
