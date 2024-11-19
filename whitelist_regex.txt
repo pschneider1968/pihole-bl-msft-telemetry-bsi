@@ -9,4 +9,5 @@ s{1,5}.symcb.com
 (\.|^)i\.lencr\.org$
 (\.|^)nordvpn\.net$
 (\.|^)fbcdn\.net$
+(\.|^)substack\.com$
 
