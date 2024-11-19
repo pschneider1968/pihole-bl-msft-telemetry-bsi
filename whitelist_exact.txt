@@ -66,6 +66,9 @@ jnn-pa.googleapis.com
 sonar21.com
 www.sonar21.com
 pixabay.com
+infowars.com
+www.infowars.com
+tv.infowars.com
 
 
 #
