@@ -69,6 +69,8 @@ pixabay.com
 infowars.com
 www.infowars.com
 tv.infowars.com
+lotto-bayern.de
+www.lotto-bayern.de
 
 
 #
