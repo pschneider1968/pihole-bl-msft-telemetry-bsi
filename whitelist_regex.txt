@@ -10,4 +10,5 @@ s{1,5}.symcb.com
 (\.|^)nordvpn\.net$
 (\.|^)fbcdn\.net$
 (\.|^)substack\.com$
+(\.|^)shortpixel\.ai$
 
