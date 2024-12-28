@@ -11,4 +11,5 @@ s{1,5}.symcb.com
 (\.|^)fbcdn\.net$
 (\.|^)substack\.com$
 (\.|^)shortpixel\.ai$
+(\.|^)burda-forward\.de$
 
