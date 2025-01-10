@@ -6,7 +6,6 @@ https://gist.githubusercontent.com/dieechtenilente/ad3fc9bacc205876b2e29dcb9043c
 https://github.com/LunarWatcher/Pihole-blocklists/raw/master/global-blocklist-plain.txt
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
-https://gitlab.com/ZeroDot1/CoinBlockerLists/raw/master/list_browser.txt
 https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
 https://hostfiles.frogeye.fr/multiparty-only-trackers.txt
 https://malware-filter.gitlab.io/malware-filter/phishing-filter-hosts.txt
@@ -90,7 +89,6 @@ https://warui.intaa.net/adhosts/hosts.txt
 https://winhelp2002.mvps.org/hosts.txt
 https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
 https://www.stopforumspam.com/downloads/toxic_domains_whole.txt
-https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
 https://raw.githubusercontent.com/nextdns/click-tracking-domains/main/domains
 https://raw.githubusercontent.com/nextdns/no-safesearch/main/domains
 https://raw.githubusercontent.com/nextdns/native-tracking-domains/main/domains/alexa
