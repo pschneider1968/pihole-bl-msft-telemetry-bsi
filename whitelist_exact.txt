@@ -80,6 +80,9 @@ www.timesofisrael.com
 px.sueddeutsche.de
 ft.trib.al
 htmlpreview.github.io
+jurawelt.com
+www.jurawelt.com
+forum.jurawelt.com
 
 
 #
