@@ -1,5 +1,7 @@
 # A vast and useful collection of Pi-Hole block lists
 
+**Important: This version is for Pi-Hole 5.x (upto 5.18.4). It has not been tested with Pi-Hole 6.x yet.**
+
 Here I publish a big collection of Pi-Hole blocklists, including a blocklist disallowing well known
 Microsoft(tm) Windows(R) Telemetry hosts, as documented by BSI Bund in Germany in their project "SiSyPHuS Win10".
 The BSI is the "German Federal Bureau of Security in Information Technology" (in German: Bundesamt für Sicherheit in der Informationstechnik).

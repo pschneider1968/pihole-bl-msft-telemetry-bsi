@@ -2,6 +2,7 @@
 # My own entries so far
 #
 
+fritz.box
 presence.teams.live.com
 presence.teams.microsoft.com
 disqus.com
@@ -51,12 +52,49 @@ storage.googleapis.com
 ablink.ma.linktr.ee
 d2.shared.global.fastly.net
 ea.newscpt19.de
+api-na1.hubapi.com
+click.e.change.org
+yoast.com
+res.cloudinary.com
+s3.us-west-2.amazonaws.com
+web.jimdo.com
+wl.spotify.com
+nextplatform.com
+open.spotify.com
+www.phpmyadmin.net
+jnn-pa.googleapis.com
+sonar21.com
+www.sonar21.com
+pixabay.com
+infowars.com
+www.infowars.com
+tv.infowars.com
+lotto-bayern.de
+www.lotto-bayern.de
+youtubetranscriptoptimizer.com
+link.springer.com
+fritz.com
+click.discord.com
+www.zerohedge.com
+www.timesofisrael.com
+px.sueddeutsche.de
+ft.trib.al
+htmlpreview.github.io
+jurawelt.com
+www.jurawelt.com
+forum.jurawelt.com
+www.longwarjournal.org
+longwarjournal.org
+gpg.fail
 
 
 #
 # More allowed sites to use Microsoft 365 through the browser
 #
 
+go.microsoft.com
+info.microsoft.com
+microsoftdemandcenter-ssl.mktoweb.com
 outlook.live.com
 onedrive.live.com
 login.live.com
