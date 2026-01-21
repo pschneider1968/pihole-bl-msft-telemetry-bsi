@@ -83,6 +83,8 @@ htmlpreview.github.io
 jurawelt.com
 www.jurawelt.com
 forum.jurawelt.com
+www.longwarjournal.org
+longwarjournal.org
 
 
 #
