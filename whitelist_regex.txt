@@ -13,4 +13,5 @@ s{1,5}.symcb.com
 (\.|^)shortpixel\.ai$
 (\.|^)burda-forward\.de$
 (\.|^)archive\.today$
+(\.|^)archive\.ph$
 
