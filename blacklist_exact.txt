@@ -2,4 +2,9 @@ cmp.heise.de
 firetvcaptiveportal.com
 fireoscaptiveportal.com
 mirror.yandex.ru
+noticecdn.samsungcloudsolution.com
+acr-eu-prd.samsungcloud.tv
+acr0.samsungcloudsolution.com
+log-config.samsungacr.com
+log-ingestion-eu.samsungacr.com
 
