@@ -90,6 +90,8 @@ dist.neo4j.org
 check.spamhaus.org
 geo.ddc.paypal.com
 dit.whatsapp.net
+gateway.instagram.com
+graph.instagram.com
 
 
 #
