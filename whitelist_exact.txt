@@ -89,6 +89,7 @@ gpg.fail
 dist.neo4j.org
 check.spamhaus.org
 geo.ddc.paypal.com
+dit.whatsapp.net
 
 
 #
