@@ -95,6 +95,7 @@ static.whatsapp.net
 ift.px-cloud.net
 gateway.instagram.com
 graph.instagram.com
+matomo.org
 
 
 #
